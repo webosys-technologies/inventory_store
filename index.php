@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+
+
 /**
  * CodeIgniter
  *
@@ -312,4 +315,6 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
+
 require_once BASEPATH.'core/CodeIgniter.php';
+
