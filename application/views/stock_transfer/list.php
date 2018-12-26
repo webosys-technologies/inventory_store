@@ -44,9 +44,12 @@
               <table id="indexdesc" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>
+                  <th width="3%">
                     <!-- Inavoice# -->
                     <?php echo "ID";?>
+                  </th>
+                    <th>
+                  Product
                   </th>
                    <th>
                   Date
@@ -74,19 +77,43 @@
                 
 
                 <tbody>
+                   
+                    <?php if(isset($transfer)){
+                       $i=0;
+                        foreach ($transfer as $trans)
+                        {
+                            $i++;                      
+                            $warehouse=$this->Purchase_model->getLocationById($trans->from_location_id);
+                            $store=$this->Purchase_model->getLocationById($trans->location_id);
+                            $product=$this->Purchase_model->getItemsById($trans->item_id);
+                            ?>
                     <tr>
+                        <td><?php echo $i;?></td>
+                        <th>
+                       <?php echo $product; ?>
+                  </th>
+                        <td><?php echo $trans->date; ?></td>
+                       
+                        <td><?php echo $warehouse; ?></td>
                         
+                        <td><?php echo $store;?></td>
+                                                
+                        <td><?php echo ""; ?></td>
                     </tr>
+                    <?php } }?>
                 </tbody>
                 <tfoot>
                  <tr>
-                   <th>
+                   <th width="3%">
                     <!-- Inavoice# -->
                     <?php echo "ID";?>
                   </th>
+                  <th>
+                  Product
+                  </th>
                    <th>
                   Date
-                  </th>
+                  </th>                  
                   <th>
                     <!-- Supplier Name -->
                     <?php echo "Warehouse(From)";?>

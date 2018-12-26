@@ -21,7 +21,7 @@ class Stock_transfer extends CI_Controller {
 			redirect('auth/login', 'refresh');
 		}
 
-		$data['purchase']=$this->Purchase_model->getPurchase();
+		$data['transfer']=$this->Stock_transfer_model->getData();
 		$this->load->view('stock_transfer/list',$data);
 	}
 
@@ -161,7 +161,8 @@ class Stock_transfer extends CI_Controller {
 							"item_id" => $value->item_id,
 							"location_id"=>$location_id,
                                                         "from_location_id"=>$from_location_id,
-							"qty" => $value->qty
+							"qty" => $value->qty,
+                                                        'date'=>$data['date']
 							);
                                          $this->Purchase_model->checkfromproduct($value->item_id,$value->qty,$from_location_id,$location);
                                          $this->Purchase_model->checktoproduct($value->item_id,$value->qty,$location_id,$location);
@@ -376,5 +377,10 @@ class Stock_transfer extends CI_Controller {
             redirect("purchases",'refresh');
 		}
 	}
+        
+        public function query()
+        {
+            $this->Stock_transfer_model->query();
+        }
 
 }

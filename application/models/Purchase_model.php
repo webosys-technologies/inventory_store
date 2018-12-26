@@ -305,5 +305,19 @@ class Purchase_model extends CI_Model{
 
         return false;  
     }
+     public function getLocationById($id)
+    {
+        $this->db->from('location');
+        $this->db->where('id',$id);
+        $query=$this->db->get();
+        return $query->row()->location_name;
+       
+    }
+    
+    public function getItemsById($id)
+    {
+        $query=$this->db->query("select item_name from item where id=$id");
+        return $query->row()->item_name;
+    }
 
 }

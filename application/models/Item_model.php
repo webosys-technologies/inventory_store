@@ -344,6 +344,12 @@ class Item_model extends CI_Model
         $query=$this->db->get('unit');
         return $query->result();
     }
+    
+    public function getItemById($id)
+    {
+        $query=$this->db->query("select item_name from item where id=$id");
+        return $query->row()->item_name;
+    }
 
 
 }

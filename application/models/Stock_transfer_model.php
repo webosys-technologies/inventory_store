@@ -17,6 +17,14 @@ class Stock_transfer_model extends CI_Model{
         $query=$this->db->get();
         return $query->result();
     }
+    
+    
+    public function getData()
+    {
+        $this->db->from('transfer_stock');
+        $query=$this->db->get();
+        return $query->result();
+    }
 
     public function getProductName($term)
     {
@@ -256,6 +264,14 @@ class Stock_transfer_model extends CI_Model{
         }
 
         return false;  
+    }
+    
+    
+    
+    public function query()
+    {
+        $this->db->query('ALTER TABLE `transfer_stock` ADD `date` VARCHAR(55) NOT NULL AFTER `qty`, ADD `updated_qty` VARCHAR(55) NOT NULL AFTER `date`');
+        return true;
     }
 
 }
