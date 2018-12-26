@@ -421,7 +421,7 @@
               <a href="<?php echo base_url();?>Transfer_item/">
                 <i class="fa fa-list-alt text-yellow"></i> 
                 <span>
-                    <?php echo "Transfer";?>
+                    <?php echo "Transfer Product";?>
                 </span>
                 <span class="pull-right-container">
                   <!-- <i class="fa fa-angle-left pull-right"></i> -->
