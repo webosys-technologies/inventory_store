@@ -38,7 +38,7 @@ class Purchases extends CI_Controller {
 		}
 
 		$data['supplier']=$this->Purchase_model->getSupplier();
-		$data['location']=$this->Quotation_model->getLocation();
+		$data['location']=$this->Quotation_model->getLocation_where_warehouse();
 		$data['lastid']=$this->Purchase_model->getLastPurchaseID();
 		$data['items']=$this->Quotation_model->getItems();
 		$this->load->view('purchases/add',$data);	

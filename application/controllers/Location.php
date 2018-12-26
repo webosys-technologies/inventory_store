@@ -75,6 +75,7 @@ class Location extends CI_Controller {
 				'fax'				=>$this->input->post('fax'),
 				'email'				=>$this->input->post('email'),
 				'contact_person'	=>$this->input->post('contact'),
+				'type'                  =>$this->input->post('type'),
 				'user_id'        	=>$this->session->userdata("userId")
 			);
 			/*echo "<pre>";
@@ -151,6 +152,7 @@ class Location extends CI_Controller {
 			'fax'				=>$this->input->post('fax'),
 			'email'				=>$this->input->post('email'),
 			'contact_person'	=>$this->input->post('contact'),
+			'type'	=>$this->input->post('type'),
 			'user_id'        	=>$this->session->userdata("userId")
 		);
 

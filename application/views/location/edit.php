@@ -107,6 +107,7 @@
 
                   <div class="col-sm-4">
                     <input type="text" placeholder="Contact" class="form-control" name="contact" value="<?php echo $location->contact_person;?>" id="contact">
+                    <input type="hidden" placeholder="Contact" class="form-control" name="type" value="warehouse" id="type">
                     <span id="val_address" style="color: red"></span>
                     <p id="con" style="color:#990000;"></p>
                   </div>

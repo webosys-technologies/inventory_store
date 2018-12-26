@@ -110,6 +110,7 @@
 
                   <div class="col-sm-4">
                     <input type="text" placeholder="Contact" class="form-control" name="contact" id="contact">
+                    <input type="hidden" placeholder="Contact" class="form-control" name="type" value="warehouse" id="type">
                     <span  style="color:#990000"></span>
                     <p id="con" style="color:#990000;"></p>
                   </div>
