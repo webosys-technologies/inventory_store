@@ -413,6 +413,22 @@
               </a>
             </li>
         <?php }} ?>
+            
+                  <?php 
+          if(isset($user_session)){
+          if(in_array("manage_item",$user_session)){?>
+            <li class="treeview">
+              <a href="<?php echo base_url();?>Transfer_item/">
+                <i class="fa fa-list-alt text-yellow"></i> 
+                <span>
+                    <?php echo "Transfer";?>
+                </span>
+                <span class="pull-right-container">
+                  <!-- <i class="fa fa-angle-left pull-right"></i> -->
+                </span>
+              </a>
+            </li>
+        <?php }} ?>
 
         <?php 
           if (isset($user_session)) {
@@ -793,6 +809,11 @@
               <li><a href="<?php echo base_url();?>location"><i class="fa fa-home text-red"></i>
                     <!-- Locations -->
                     <?php echo $this->lang->line('lbl_warehouses');?>
+                  </a>
+              </li>
+              <li><a href="<?php echo base_url();?>Store"><i class="fa fa-home text-red"></i>
+                    <!-- Locations -->
+                    <?php echo "Store";?>
                   </a>
               </li>
             <?php }} ?>
