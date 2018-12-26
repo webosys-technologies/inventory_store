@@ -5,7 +5,7 @@ class Stock_transfer extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model(array('Purchase_model','Quotation_model'));
+		$this->load->model(array('Purchase_model','Quotation_model','Stock_transfer_model'));
 		$this->load->library(array('ion_auth','form_validation'));
 	}
 
@@ -112,16 +112,19 @@ class Stock_transfer extends CI_Controller {
 		}
 
 //		$this->form_validation->set_rules('supplier','Supplier Name','required');
-        $this->form_validation->set_rules('location','Location Name','required');
+        $this->form_validation->set_rules('from_location','Location Name','required');
         $this->form_validation->set_rules('purchase_date','Purchase Date','required');
         
         
         if($this->form_validation->run()== true)
         {
-        	$location_id = $this->input->post('location');
+        
+        	  $location_id = $this->input->post('to_location');
+                  $from_location_id = $this->input->post('from_location');
 
 			$data['supplier_id']=$this->input->post('supplier');	
-			$data['location_id']=$this->input->post('location');
+			$data['location_id']=$this->input->post('to_location');
+                        $data['from_location_id']=$this->input->post('from_location');
 			$data['date'] = $this->input->post('purchase_date');	
 			$data['reference_no']="PO-".$this->input->post('reference_no');	
 			$data['total_tax']=$this->input->post('totalTax');	
@@ -134,10 +137,10 @@ class Stock_transfer extends CI_Controller {
 
 			$data1=json_decode($this->input->post('allpurchase'));
 
-			/*echo "<pre>";
+			echo "<pre>";
 			print_r($data);
 			print_r($data1);
-			exit();*/
+			exit();
 
 			$purchase_id=$this->Purchase_model->addPurchase($data);
 			$this->Purchase_model->AddPurchaseLog($purchase_id);
@@ -175,7 +178,8 @@ class Stock_transfer extends CI_Controller {
 							"qty" => $value->qty
 							);
 
-					$this->Purchase_model->addItemLocation($item_id,$quantity,$location_id,$location);
+//					$this->Purchase_model->addItemLocation($item_id,$quantity,$location_id,$location);
+                                        $this->Stock_transfer_model->addItemLocation($item_id,$quantity,$location_id,$location,$from_location);
 				}
 				/*echo "<pre>";
 				print_r($purchaseItem);exit();*/

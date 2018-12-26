@@ -418,7 +418,7 @@
           if(isset($user_session)){
           if(in_array("manage_item",$user_session)){?>
             <li class="treeview">
-              <a href="<?php echo base_url();?>Stock_Transfer/">
+              <a href="<?php echo base_url();?>Stock_Transfer">
                 <i class="fa fa-list-alt text-yellow"></i> 
                 <span>
                     <?php echo "Stock Transfer";?>

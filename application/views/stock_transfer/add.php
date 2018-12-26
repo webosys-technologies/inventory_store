@@ -96,7 +96,7 @@
                             <select class="form-control select2" name="to_location" id="to_location">
                                 <option value="">
                                   <!-- Select Location -->
-                                  <?php echo "To ".$this->lang->line('lbl_dropdown_customer');?>
+                                  <?php echo $this->lang->line('lbl_dropdown_customer');?>
                                 </option>
                                 <?php foreach ($location as $value) { 
                                     if($value->type=="store")
@@ -107,7 +107,7 @@
                                 
                             </select>
                             <p style="color:#990000;"></p>
-                            <span style="color:#990000"><?php echo form_error('location');?></span>
+                            <span style="color:#990000"><?php echo form_error('to_location');?></span>
                           </div>
                         </div>
                     </div>
@@ -734,10 +734,10 @@
 
     $("input[name='purchaseSubmit']").click(function(e){
        
-        var supplier=chkDrop("purchase","supplier","Please Select Supplier");
-        var location=chkDrop("purchase","location","Please Select location");
+//        var supplier=chkDrop("purchase","supplier","Please Select Supplier");
+//        var location=chkDrop("purchase","from_location","Please Select location");
         var date=chkEmpty("purchase","purchase_date","Please Select Purchase Date");
-        var ref=chkEmpty("purchase","reference_no","Please Enter reference no");
+//        var ref=chkEmpty("purchase","reference_no","Please Enter reference no");
         var total=chkGrandTotal("purchase","grandTotal","Please Select one Item");
         //var reference=chkEmpty("purchase","reference","Please Enter Reference No");
         if((supplier+location+date+total) < 1){

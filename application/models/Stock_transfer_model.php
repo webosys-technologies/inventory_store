@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Purchase_model extends CI_Model{
+class Stock_transfer_model extends CI_Model{
     
     function __construct()
     {
@@ -226,21 +226,21 @@ class Purchase_model extends CI_Model{
         return FALSE;
     }
     
-    public function addItemLocation($item_id,$quantity,$location_id,$location){
-        $sql = "select * from warehouse where item_id = ? AND location_id = ?";
-        $query = $this->db->query($sql,array($item_id,$location_id));
+    public function addItemLocation($item_id,$quantity,$location_id,$from_location){
+        $sql = "select * from transfer_stock where item_id = ? AND location_id = ? AND from_location_id = ?";
+        $query = $this->db->query($sql,array($item_id,$location_id,$from_location));
         
         if($query->num_rows()>0){
             $result = $query->result();
             foreach ($result as  $value) {
                 $qty = $quantity + $value->qty;
-                $sql = "update warehouse set qty = ? where item_id = ? AND location_id = ?";
-                $this->db->query($sql,array($qty,$item_id,$location_id));
+                $sql = "update transfer_stock set qty = ? where item_id = ? AND location_id = ? AND from_location_id";
+                $this->db->query($sql,array($qty,$item_id,$location_id,$from_location));
             }
         }
         else{
-            $sql = "insert into warehouse(item_id,location_id,qty) values (?,?,?)";
-            $this->db->query($sql,$location);
+            $sql = "insert into warehouse(item_id,location_id,from_location_id,qty) values (?,?,?,?)";
+            $this->db->query($sql,array($item_id,$location_id,$from_location,$quantity));
         }
 
     }
