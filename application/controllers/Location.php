@@ -67,8 +67,10 @@ class Location extends CI_Controller {
 				$this->new_location();
 		}
 		else{
+                  
 			$location=array(			
 				'location_name'		=>$this->input->post('location_name'),
+                                'type'                  =>'warehouse',
 				'location_code'		=>$this->input->post('loc_code'),
 				'delivery_address'	=>$this->input->post('delivery_address'),
 				'phone'				=>$this->input->post('phone'),

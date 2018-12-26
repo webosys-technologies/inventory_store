@@ -17,7 +17,7 @@
        <div class="col-md-12">
          <div class="box box-default">
            <div class="box-body">
-            <form action="<?php echo base_url();?>purchases/add" method="POST" name="purchase" id="purchase_form">  
+            <form action="<?php echo base_url();?>Stock_transfer/add" method="POST" name="purchase" id="purchase_form">  
               <div class="row">
 <!--                   <div class="col-md-3">
                       <div class="form-group">
@@ -56,23 +56,26 @@
                             
                         </div>
                     </div>
-
+ 
 
                     <div class="col-md-4">
                         <div class="form-group">
                           <label for="exampleInputEmail1">
                             <!-- Warehouse -->
-                            <?php echo $this->lang->line('lbl_warehouse');?>
-                            <a href="#warehouse" data-toggle="modal" data-target="" ><span class="">Add Warehouse</span></a>
+                            <?php echo "From ".$this->lang->line('lbl_warehouse');?>
+                            <!--<a href="#warehouse" data-toggle="modal" data-target="" ><span class="">Add Warehouse</span></a>-->
                           <span class="text-danger"> *</span></label>
                           <div class="form-group">
-                            <select class="form-control select2" name="location" id="location_id">
+                            <select class="form-control select2" name="from_location" id="from_location">
                                 <option value="">
                                   <!-- Select Location -->
                                   <?php echo $this->lang->line('lbl_dropdown_customer');?>
                                 </option>
                                 <?php foreach ($location as $value) { 
+                                     if($value->type=="warehouse")
+                                    {
                                    echo "<option value='$value->id'".set_select('location',$value->id).">$value->location_name</option>";
+                                    }
                                 }?>
                                 
                             </select>
@@ -86,17 +89,20 @@
                         <div class="form-group">
                           <label for="exampleInputEmail1">
                             <!-- Warehouse -->
-                            <?php echo $this->lang->line('lbl_warehouse');?>
-                            <a href="#warehouse" data-toggle="modal" data-target="" ><span class="">Add Warehouse</span></a>
+                            <?php echo "To Store";?>
+                            <!--<a href="#warehouse" data-toggle="modal" data-target="" ><span class="">Add Warehouse</span></a>-->
                           <span class="text-danger"> *</span></label>
                           <div class="form-group">
-                            <select class="form-control select2" name="location" id="location_id">
+                            <select class="form-control select2" name="to_location" id="to_location">
                                 <option value="">
                                   <!-- Select Location -->
-                                  <?php echo $this->lang->line('lbl_dropdown_customer');?>
+                                  <?php echo "To ".$this->lang->line('lbl_dropdown_customer');?>
                                 </option>
                                 <?php foreach ($location as $value) { 
+                                    if($value->type=="store")
+                                    {
                                    echo "<option value='$value->id'".set_select('location',$value->id).">$value->location_name</option>";
+                                    }
                                 }?>
                                 
                             </select>

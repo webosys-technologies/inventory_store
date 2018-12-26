@@ -212,6 +212,13 @@ class Quotation_model extends CI_Model{
         $query=$this->db->get('location');
         return $query->result();
     }
+    public function getLocationByType()
+    {
+        $this->db->select('id,location_name,type');
+        $this->db->where('delete_status',0);
+        $query=$this->db->get('location');
+        return $query->result();
+    }
 
     public function getShippingIds($customer_id)
     {

@@ -46,110 +46,71 @@
                 <tr>
                   <th>
                     <!-- Inavoice# -->
-                    <?php echo $this->lang->line('lbl_purchase_invoiceno');?>
+                    <?php echo "ID";?>
                   </th>
                   <th>
                     <!-- Supplier Name -->
-                    <?php echo $this->lang->line('lbl_purchase_suppliername');?>
+                    <?php echo "From Warehouse";?>
                   </th>
                   <th>
                     <!-- Total -->
-                    <?php echo $this->lang->line('lbl_purchase_total');?>
+                    <?php echo "To Store";?>
                   </th>
+                       
                   <th>
                     <!-- Date -->
-                    <?php echo $this->lang->line('lbl_purchase_date');?>
+                    <?php echo "Product";?>
+                  </th>
+                   <th>
+                    <!-- Date -->
+                    <?php echo "Quantity";?>
                   </th>
                   <th>
-                    <!-- Action -->
-                    <?php echo $this->lang->line('lbl_purchase_action');?>
+                  Date
                   </th>
+<!--                  <th>
+                     Action 
+                    <?php // echo $this->lang->line('lbl_purchase_action');?>
+                  </th>-->
                 </tr>
                 </thead>
                 
 
                 <tbody>
-                <?php foreach ($purchase as $value) {?>
-                <tr>
-                  <td><a href="<?php echo base_url();?>purchases/purchase_details/<?php echo $value->purchase_id;?>"><?php echo $value->reference_no;?></a></td>
-                  <td><?php echo $value->name;?></td>
-                  <td><?php echo $value->total_amount;?></td>
-                  <td><?php echo $value->date;?></td>
-                  <td>
-
-
-                  <?php if(in_array("edit_purchase",$user_session)){ ?>
-                    <a title="Edit" class="btn btn-xs btn-primary" href="<?php echo base_url();?>purchases/edit/<?php echo $value->purchase_id;?>" data-tt="tooltip"><span class="fa fa-edit"></span></a>
-                  <?php } ?>
-                  &nbsp;
-                  <?php  if(in_array("delete_purchase",$user_session)){ ?>
-                    <a href="#<?php echo''.$value->purchase_id.'';?>" data-toggle="modal" data-target="" class="btn btn-xs btn-danger" data-tt="tooltip" title="Delete"><span class="fa fa-remove"></span></a>
-                  <?php } ?>
-
-                  
-
-
-                        <div class="example-modal">
-                              <div class="modal fade" id="<?php echo''.$value->purchase_id.'';?>">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                      <center><h4 class="modal-title">
-                                        <!-- !!  Delete Purchases !! -->
-                                        <?php echo $this->lang->line('lbl_purchase_delete_modal');?>
-                                      </h4></center>
-                                    </div>
-                                    <div class="modal-body">
-                                      <p><h4><b>
-                                        <!-- Are you sure to delete this Record !!&hellip; -->
-                                        <?php echo $this->lang->line('delete_modal');?>
-                                      </b></h4></p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                                          <?php echo $this->lang->line('btn_modal_close');?>
-                                        </button>
-                                        <a href="<?php echo base_url();?>purchases/delete/<?php echo $value->purchase_id; ?>" class="btn btn-danger" >
-                                        <?php echo $this->lang->line('btn_modal_delete');?>
-                                          
-                                        </a>
-                                    </div>
-                                  </div>
-                                  <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                              </div>
-                              <!-- /.modal -->
-                            </div>
-                            <!-- /.example-modal -->
-                  </td>
-                </tr>
-                <?php } ?>
+                    <tr>
+                        
+                    </tr>
                 </tbody>
                 <tfoot>
-                <tr>
-                 <th>
+                 <tr>
+                  <th>
                     <!-- Inavoice# -->
-                    <?php echo $this->lang->line('lbl_purchase_invoiceno');?>
+                    <?php echo "ID";?>
                   </th>
                   <th>
                     <!-- Supplier Name -->
-                    <?php echo $this->lang->line('lbl_purchase_suppliername');?>
+                    <?php echo "From Warehouse";?>
                   </th>
                   <th>
                     <!-- Total -->
-                    <?php echo $this->lang->line('lbl_purchase_total');?>
+                    <?php echo "To Store";?>
                   </th>
+                       
                   <th>
                     <!-- Date -->
-                    <?php echo $this->lang->line('lbl_purchase_date');?>
+                    <?php echo "Product";?>
+                  </th>
+                   <th>
+                    <!-- Date -->
+                    <?php echo "Quantity";?>
                   </th>
                   <th>
-                    <!-- Action -->
-                    <?php echo $this->lang->line('lbl_purchase_action');?>
+                  Date
                   </th>
+<!--                  <th>
+                     Action 
+                    <?php // echo $this->lang->line('lbl_purchase_action');?>
+                  </th>-->
                 </tr>
                 </tfoot>
               </table>

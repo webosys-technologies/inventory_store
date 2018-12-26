@@ -38,7 +38,7 @@ class Stock_transfer extends CI_Controller {
 		}
 
 		$data['supplier']=$this->Purchase_model->getSupplier();
-		$data['location']=$this->Quotation_model->getLocation();
+		$data['location']=$this->Quotation_model->getLocationByType();
 		$data['lastid']=$this->Purchase_model->getLastPurchaseID();
 		$data['items']=$this->Quotation_model->getItems();
 		$this->load->view('stock_transfer/add',$data);	
@@ -111,7 +111,7 @@ class Stock_transfer extends CI_Controller {
 			redirect('auth/login', 'refresh');
 		}
 
-		$this->form_validation->set_rules('supplier','Supplier Name','required');
+//		$this->form_validation->set_rules('supplier','Supplier Name','required');
         $this->form_validation->set_rules('location','Location Name','required');
         $this->form_validation->set_rules('purchase_date','Purchase Date','required');
         
