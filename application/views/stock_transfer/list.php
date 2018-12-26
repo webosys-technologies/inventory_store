@@ -48,26 +48,23 @@
                     <!-- Inavoice# -->
                     <?php echo "ID";?>
                   </th>
+                   <th>
+                  Date
+                  </th>
                   <th>
                     <!-- Supplier Name -->
-                    <?php echo "From Warehouse";?>
+                    <?php echo "Warehouse(From)";?>
                   </th>
                   <th>
                     <!-- Total -->
-                    <?php echo "To Store";?>
+                    <?php echo "Warehouse(To)";?>
                   </th>
-                       
-                  <th>
-                    <!-- Date -->
-                    <?php echo "Product";?>
-                  </th>
+              
                    <th>
                     <!-- Date -->
-                    <?php echo "Quantity";?>
+                    <?php echo "Total";?>
                   </th>
-                  <th>
-                  Date
-                  </th>
+                 
 <!--                  <th>
                      Action 
                     <?php // echo $this->lang->line('lbl_purchase_action');?>
@@ -83,34 +80,26 @@
                 </tbody>
                 <tfoot>
                  <tr>
-                  <th>
+                   <th>
                     <!-- Inavoice# -->
                     <?php echo "ID";?>
                   </th>
+                   <th>
+                  Date
+                  </th>
                   <th>
                     <!-- Supplier Name -->
-                    <?php echo "From Warehouse";?>
+                    <?php echo "Warehouse(From)";?>
                   </th>
                   <th>
                     <!-- Total -->
-                    <?php echo "To Store";?>
+                    <?php echo "Warehouse(To)";?>
                   </th>
-                       
-                  <th>
-                    <!-- Date -->
-                    <?php echo "Product";?>
-                  </th>
+              
                    <th>
                     <!-- Date -->
-                    <?php echo "Quantity";?>
+                    <?php echo "Total";?>
                   </th>
-                  <th>
-                  Date
-                  </th>
-<!--                  <th>
-                     Action 
-                    <?php // echo $this->lang->line('lbl_purchase_action');?>
-                  </th>-->
                 </tr>
                 </tfoot>
               </table>

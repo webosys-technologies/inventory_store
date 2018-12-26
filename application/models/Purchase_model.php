@@ -85,7 +85,42 @@ class Purchase_model extends CI_Model{
         exit();*/
         $data = $this->db->insert_batch('purchase_item', $purchaseItem);
     }
-
+ 
+    public function checkfromproduct($item_id,$quantity,$location_id,$location)
+    {
+        $sql = "select * from warehouse where item_id = ? AND location_id = ?";
+        $query = $this->db->query($sql,array($item_id,$location_id));
+        
+        if($query->num_rows()>0){
+            $result = $query->result();
+            foreach ($result as  $value) {
+                $qty = $value->qty - $quantity;
+                $sql = "update warehouse set qty = ? where item_id = ? AND location_id = ?";
+                $this->db->query($sql,array($qty,$item_id,$location_id));
+            }
+        }
+       
+    }
+    
+    public function checktoproduct($item_id,$quantity,$location_id,$location)
+    {
+        $sql = "select * from warehouse where item_id = ? AND location_id = ?";
+        $query = $this->db->query($sql,array($item_id,$location_id));
+        
+        if($query->num_rows()>0){
+            $result = $query->result();
+            foreach ($result as  $value) {
+                $qty = $quantity + $value->qty;
+                $sql = "update warehouse set qty = ? where item_id = ? AND location_id = ?";
+                $this->db->query($sql,array($qty,$item_id,$location_id));
+            }
+        }
+        else{
+            $sql = "insert into warehouse(item_id,location_id,qty) values (?,?,?)";
+            $this->db->query($sql,$location);
+        }
+    }
+    
     public function getLocationItems($location_id,$items)
     {
 

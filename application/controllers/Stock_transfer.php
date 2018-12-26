@@ -119,8 +119,8 @@ class Stock_transfer extends CI_Controller {
         if($this->form_validation->run()== true)
         {
         
-        	  $location_id = $this->input->post('to_location');
-                  $from_location_id = $this->input->post('from_location');
+        	        $location_id=$this->input->post('to_location');
+                        $from_location_id=$this->input->post('from_location');
 
 			$data['supplier_id']=$this->input->post('supplier');	
 			$data['location_id']=$this->input->post('to_location');
@@ -137,55 +137,42 @@ class Stock_transfer extends CI_Controller {
 
 			$data1=json_decode($this->input->post('allpurchase'));
 
-			echo "<pre>";
-			print_r($data);
-			print_r($data1);
-			exit();
+//			echo "<pre>";
+//			print_r($data);
+//			print_r($data1);
+//			exit();
 
-			$purchase_id=$this->Purchase_model->addPurchase($data);
-			$this->Purchase_model->AddPurchaseLog($purchase_id);
+//			$purchase_id=$this->Purchase_model->addPurchase($data);
+//			$this->Purchase_model->AddPurchaseLog($purchase_id);
 			$purchaseItem=array();
 
-			if(isset($purchase_id))
+			if(true)
 			{
 				$i=0;
 				foreach ($data1 as $value) {
-					$tax_id = $value->tax_id;
-					$item_id = $value->item_id;
-					$quantity = $value->qty;
-
-					$i=0;
-					foreach ($data1 as $key => $val) {
-						if($tax_id == $val->tax_id){
-							$purchaseItem[$i]=array(
-								'item_id' => $val->item_id,
-								'purchase_id' => $purchase_id,
-								'qty' => $val->qty,
-								'rate' => $val->rate,
-								'tax_id' => $val->tax_id,
-								'tax_amount' => $val->tax,
-								'discount' => $val->discount,
-								'amount' => $val->amount,
-								'location_id' =>$location_id,
-								'sub_invoice_no'=> $data['reference_no'].'-'.$tax_id
-							);
-						}
-						$i++;		
-					}
+					
+						
 					$location = array(
 							"item_id" => $value->item_id,
-							"location_id" => $location_id,
+							"location_id"=>$location_id,
+							"qty" => $value->qty
+							);
+                                        $stock = array(
+							"item_id" => $value->item_id,
+							"location_id"=>$location_id,
                                                         "from_location_id"=>$from_location_id,
 							"qty" => $value->qty
 							);
-
-//					$this->Purchase_model->addItemLocation($item_id,$quantity,$location_id,$location);
-                                        $this->Stock_transfer_model->addItemLocation($item_id,$quantity,$location_id,$location,$from_location);
+                                         $this->Purchase_model->checkfromproduct($value->item_id,$value->qty,$from_location_id,$location);
+                                         $this->Purchase_model->checktoproduct($value->item_id,$value->qty,$location_id,$location);
+//                                        $this->Purchase_model->addPurchaseItem($purchaseItem);
+                                        $this->Stock_transfer_model->addItemLocation($stock);
+                                       
 				}
 				/*echo "<pre>";
 				print_r($purchaseItem);exit();*/
-				$this->Purchase_model->addPurchaseItem($purchaseItem);
-				redirect('purchases/purchase_details/'.$purchase_id,'refresh');
+//				$this->Purchase_model->addPurchaseItem($purchaseItem);
+				redirect('Stock_transfer','refresh');
 			}
 		}
 		else{

@@ -219,6 +219,10 @@
                               <!-- Quantity -->
                               <?php echo $this->lang->line('lbl_addpurchase_quantity');?>
                             </th>
+                             <th width="10%" class="text-center">
+                              <!-- Quantity -->
+                              <?php echo "Available Qty";?>
+                            </th>
                             <th width="10%" class="text-center">
                               <!-- Rate  -->
                               <?php echo $this->lang->line('lbl_addpurchase_rate');?>
@@ -917,7 +921,7 @@
                 '<td>'+
                   '<input type="number" name="qty1" id="qty1" value="0" class="form-control get-data qty1" autocomplete="off" min="0">'+
                 '</td>'+
-
+                '<td>'+data1['items'].qty+'</td>'+
                 '<td>'+
                   '<input type="text" name="price_change" id="price_change" value="'+data1['items'].purchase_price+'" class="form-control" autocomplete="off">'+
                   '<input type="hidden" name="price" id="price" value="'+data1['items'].purchase_price+'" class="form-control get-data price">'+
