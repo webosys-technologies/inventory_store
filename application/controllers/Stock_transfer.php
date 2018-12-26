@@ -175,6 +175,7 @@ class Stock_transfer extends CI_Controller {
 					$location = array(
 							"item_id" => $value->item_id,
 							"location_id" => $location_id,
+                                                        "from_location_id"=>$from_location_id,
 							"qty" => $value->qty
 							);
 

@@ -226,7 +226,7 @@ class Stock_transfer_model extends CI_Model{
         return FALSE;
     }
     
-    public function addItemLocation($item_id,$quantity,$location_id,$from_location){
+    public function addItemLocation($item_id,$quantity,$location_id,$location,$from_location){
         $sql = "select * from transfer_stock where item_id = ? AND location_id = ? AND from_location_id = ?";
         $query = $this->db->query($sql,array($item_id,$location_id,$from_location));
         
@@ -240,7 +240,7 @@ class Stock_transfer_model extends CI_Model{
         }
         else{
             $sql = "insert into warehouse(item_id,location_id,from_location_id,qty) values (?,?,?,?)";
-            $this->db->query($sql,array($item_id,$location_id,$from_location,$quantity));
+            $this->db->query($sql,$location);
         }
 
     }
