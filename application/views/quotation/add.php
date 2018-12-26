@@ -1614,7 +1614,7 @@
         var state         =  chkDrop("sales","state","Please Select State");
         var country       =  chkDrop("sales","country","Please Select Country");
         var paymentterm   =  chkDrop("sales","paymentterm","Please Select Payment Term");
-
+        
         if((customer + location + paymentmethod + date + reference + total + state + country + paymentterm) < 1){
           var flag = 0;
           $('.item_name1').each(function(){

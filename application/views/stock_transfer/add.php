@@ -80,7 +80,7 @@
                                 
                             </select>
                             <p style="color:#990000;"></p>
-                            <span style="color:#990000"><?php echo form_error('location');?></span>
+                            <span style="color:#990000"><?php echo form_error('from_location');?></span>
                           </div>
                         </div>
                     </div>
@@ -297,6 +297,7 @@
                               (<?php echo $this->session->userdata("currencySymbol");?>)</strong></td>
                               <td align="left"><input type="text" name="grandTotal" class="form-control" id="grandTotal" readonly="" size="2">
                               <p style="color:#990000;"></p>
+                              <span style="color:#990000"><?php echo form_error('grandTotal');?></span>
                                 </td>
                             </tr>
                         </table>
@@ -739,13 +740,15 @@
     $("input[name='purchaseSubmit']").click(function(e){
        
 //        var supplier=chkDrop("purchase","supplier","Please Select Supplier");
-//        var location=chkDrop("purchase","from_location","Please Select location");
+        var location=chkDrop("purchase","from_location","Please Select Warehouse");
+         var to_location=chkDrop("purchase","to_location","Please Select Store");
         var date=chkEmpty("purchase","purchase_date","Please Select Purchase Date");
 //        var ref=chkEmpty("purchase","reference_no","Please Enter reference no");
         var total=chkGrandTotal("purchase","grandTotal","Please Select one Item");
         //var reference=chkEmpty("purchase","reference","Please Enter Reference No");
-        if((supplier+location+date+total) < 1){
-
+       
+        if((location+date+total+to_location) < 1){
+       
           var flag = 0;
           $('.purchase_data').each(function(){
             var currentRow=$(this).closest("tr");

@@ -112,7 +112,9 @@ class Stock_transfer extends CI_Controller {
 		}
 
 //		$this->form_validation->set_rules('supplier','Supplier Name','required');
-        $this->form_validation->set_rules('from_location','Location Name','required');
+        $this->form_validation->set_rules('from_location','Warehouse Name','required');
+        $this->form_validation->set_rules('to_location','Store Name','required');
+//        $this->form_validation->set_rules('grandTotal','One Item','required');
         $this->form_validation->set_rules('purchase_date','Purchase Date','required');
         
         
@@ -177,7 +179,7 @@ class Stock_transfer extends CI_Controller {
 			}
 		}
 		else{
-			$this->add_stock();
+			redirect('Stock_transfer/add_stock','refresh');
 		}
 	}
 
