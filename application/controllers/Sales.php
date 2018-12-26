@@ -34,7 +34,7 @@ class Sales extends CI_Controller {
         $data['country']  = $this->Customer_model->dataCountry();
 		$data['state1'] = $this->Customer_model->dataState();
 		$data['customer']=$this->Quotation_model->getCustomer();
-		$data['location']=$this->Quotation_model->getLocation();
+		$data['location']=$this->Quotation_model->getLocation_where_store();
 		$data['lastid']=$this->Sales_model->getLastSalesId();
 		$data['items']=$this->Quotation_model->getItems();
 		$data['paymentmethod']=$this->Quotation_model->getPaymentMethod();
