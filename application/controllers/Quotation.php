@@ -584,10 +584,15 @@ class Quotation extends CI_Controller {
 
 	public function add_warehouse()
 	{
-		$warehouse = $this->input->post('warehouse_name');
+		
+		$warehouse = array(
+			'location_name' => $this->input->post('warehouse_name'),
+			'type' => 'warehouse'
+		);
+		
 		//log_message('debug', print_r($warehouse, true));
 		$data['warehouse_id']=$this->Quotation_model->addWarehouse($warehouse);
-		$data['warehouse']=$this->Quotation_model->getWarehouse();
+		$data['warehouse']=$this->Quotation_model->getLocation_where_warehouse();
 		//log_message('debug', print_r($data, true));
 		/*echo "<pre>";
 		print_r($data);*/

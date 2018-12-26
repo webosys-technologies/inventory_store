@@ -17,11 +17,13 @@ class Location_model extends CI_Model
         if($this->session->userdata('type')=='admin')
         {
             $this->db->where('delete_status',0);
+            $this->db->where('type','warehouse');
             $query=$this->db->get('location');
             return $query->result();
         }
         else{
             $this->db->where('delete_status',0);
+            $this->db->where('type','warehouse');
             $this->db->where('user_id',$this->session->userdata('userId'));
             $query=$this->db->get('location');
             return $query->result();

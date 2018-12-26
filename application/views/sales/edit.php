@@ -59,7 +59,7 @@
                           <div class="form-group">
                               <label for="exampleInputEmail1">
                                 <!-- Warehouse -->
-                                <?php echo $this->lang->line('lbl_warehouse');?>
+                                <?php echo "Store"; //echo $this->lang->line('lbl_warehouse');?>
                               <span class="text-danger"> *</span></label>
                               <div class="form-group">
                                 <select class="form-control select2" name="location" id="location_id">

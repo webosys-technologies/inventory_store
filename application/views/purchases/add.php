@@ -374,6 +374,7 @@
     $("#add_warehouse").click(function ()
     {
         var warehouse = $("#warehouse_name").val();
+        var warehouse_type='warehouse';
 
         if(warehouse=="")
         {

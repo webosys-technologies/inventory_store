@@ -212,9 +212,28 @@ class Quotation_model extends CI_Model{
         $query=$this->db->get('location');
         return $query->result();
     }
+
     public function getLocationByType()
     {
         $this->db->select('id,location_name,type');
+        $this->db->where('delete_status',0);
+        $query=$this->db->get('location');
+        return $query->result();
+    }
+    
+    public function getLocation_where_warehouse()
+    {
+        $this->db->select('id,location_name');
+        $this->db->where('type','warehouse');
+        $this->db->where('delete_status',0);
+        $query=$this->db->get('location');
+        return $query->result();
+    }
+    public function getLocation_where_store()
+    {
+        $this->db->select('id,location_name');
+        $this->db->where('type','store');
+
         $this->db->where('delete_status',0);
         $query=$this->db->get('location');
         return $query->result();
@@ -497,8 +516,9 @@ class Quotation_model extends CI_Model{
 
     public function addWarehouse($warehouse)
     {
-        $sql="INSERT INTO `location`(`location_name`) VALUES (?)";
-        if($this->db->query($sql,array($warehouse))){
+       
+        $sql="INSERT INTO `location`(`location_name`,`type`) VALUES (?,?)";
+        if($this->db->query($sql,$warehouse)){
             return $this->db->insert_id();
         }
         return false;
